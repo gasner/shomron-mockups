@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>בית הראשונים – קרני שומרון</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;700;900&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy:    { DEFAULT: '#1B3A6B', light: '#254d8f', dark: '#122648' },
+          cyan:    { DEFAULT: '#00B4C8', light: '#33C3D4', dark: '#008A9A' },
+          green:   { DEFAULT: '#7DC24B', light: '#99D169', dark: '#5E9636' },
+          orange:  { DEFAULT: '#F5A623', light: '#F7BA52', dark: '#D48C0F' },
+          cream:   '#F5F8FF',
+          mist:    '#EBF4F6',
+        },
+        fontFamily: {
+          serif: ['"Frank Ruhl Libre"', 'serif'],
+          sans:  ['Heebo', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+<style>
+  body { font-family: 'Heebo', sans-serif; }
+  .hero-bg {
+    background:
+      linear-gradient(to left, rgba(27,58,107,.15), rgba(27,58,107,.72)),
+      linear-gradient(0deg, rgba(27,58,107,.85) 0%, transparent 55%),
+      linear-gradient(135deg, #1B3A6B 0%, #254d8f 40%, #122648 100%);
+    animation: heroShift 10s ease-in-out infinite alternate;
+  }
+  @keyframes heroShift {
+    from { filter: brightness(1); }
+    to   { filter: brightness(1.07) saturate(1.08); }
+  }
+  .terrain-svg { position: absolute; bottom: 0; left: 0; right: 0; pointer-events: none; }
+  .nc-bg { transition: transform .4s ease; }
+  .nc-card:hover .nc-bg { transform: scale(1.06); }
+  .gallery-strip { scrollbar-width: thin; scrollbar-color: #00B4C8 transparent; }
+  .fade-up { opacity: 0; transform: translateY(18px); transition: opacity .55s, transform .55s; }
+  .fade-up.in { opacity: 1; transform: none; }
+  .tab-btn { border-bottom: 3px solid transparent; transition: all .2s; }
+  .tab-btn.active { border-bottom-color: #00B4C8; color: #1B3A6B; font-weight: 600; }
+</style>
+</head>
+<body class="bg-white text-navy-dark">
+
+<!-- ═══════════════════════════════════════
+     NAV
+════════════════════════════════════════ -->
+<nav class="bg-navy sticky top-0 z-50 shadow-lg">
+  <div class="max-w-7xl mx-auto px-14 h-16 flex items-center justify-between gap-6">
+
+    <!-- Brand -->
+    <div class="flex items-center gap-3 shrink-0">
+      <div class="w-9 h-9 rounded-full bg-cyan flex items-center justify-center font-serif font-black text-white text-lg shadow">ב</div>
+      <div class="leading-tight">
+        <div class="font-serif font-bold text-white text-[15px]">בית הראשונים</div>
+        <div class="text-[10px] text-cyan font-light tracking-wide">למורשת קרני שומרון</div>
+      </div>
+    </div>
+
+    <!-- Links -->
+    <ul class="flex gap-6 list-none">
+      <li><a href="#" class="text-white/70 hover:text-white text-sm transition-colors">דף הבית</a></li>
+      <li><a href="#" class="text-white/70 hover:text-white text-sm transition-colors">השכונות</a></li>
+      <li><a href="#" class="text-white/70 hover:text-white text-sm transition-colors">ציר הזמן</a></li>
+      <li><a href="#" class="text-white/70 hover:text-white text-sm transition-colors">גלריה</a></li>
+      <li><a href="#" class="text-white/70 hover:text-white text-sm transition-colors">אנשים ומשפחות</a></li>
+      <li><a href="#" class="text-white/70 hover:text-white text-sm transition-colors">שיתוף תוכן</a></li>
+      <li><a href="#" class="text-white/70 hover:text-white text-sm transition-colors">יצירת קשר</a></li>
+    </ul>
+
+    <!-- Search -->
+    <div class="flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-1.5 cursor-pointer shrink-0">
+      <svg class="opacity-50" width="13" height="13" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <span class="text-white/50 text-[13px]">חיפוש באתר...</span>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<div class="relative h-[540px] overflow-hidden flex items-end">
+  <div class="hero-bg absolute inset-0"></div>
+
+  <!-- terrain decoration -->
+  <svg class="terrain-svg" viewBox="0 0 1440 120" preserveAspectRatio="none" height="120">
+    <path d="M0,60 C300,20 600,100 900,50 C1100,15 1300,80 1440,40 L1440,120 L0,120Z" fill="rgba(27,58,107,0.35)"/>
+    <path d="M0,80 C200,50 500,100 800,65 C1050,38 1250,90 1440,60 L1440,120 L0,120Z" fill="rgba(27,58,107,0.6)"/>
+  </svg>
+
+  <!-- grain overlay -->
+  <div class="absolute inset-0 opacity-[0.03]" style="background-image:url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")"></div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-14 pb-14">
+    <!-- eyebrow -->
+    <div class="inline-flex items-center gap-2 bg-cyan text-navy font-bold text-[11px] tracking-[1.5px] uppercase px-3 py-1 rounded-sm mb-4">
+      ✦ ארכיון היסטורי דיגיטלי
+    </div>
+    <h1 class="font-serif font-black text-6xl text-white leading-[1.05] mb-4 drop-shadow-lg">
+      זיכרונות<br><span class="text-cyan">קרני שומרון</span>
+    </h1>
+    <p class="text-white/80 font-light text-[17px] leading-relaxed max-w-[480px] mb-8">
+      סיפורי ההקמה, האנשים, הבתים הראשונים והשכונות שצמחו מתוך ריק לקהילה שלמה.
+    </p>
+    <div class="flex gap-3 flex-wrap">
+      <a href="#" class="inline-flex items-center gap-2 bg-cyan hover:bg-cyan-light text-navy font-bold text-[15px] px-7 py-3 rounded-sm shadow transition-all hover:-translate-y-px">
+        ← גלה את הסיפורים
+      </a>
+      <a href="#" class="inline-flex items-center border border-white/40 hover:border-white/80 hover:bg-white/10 text-white font-medium text-[15px] px-7 py-3 rounded-sm transition-all">
+        שתף תמונה מהעבר
+      </a>
+    </div>
+  </div>
+
+  <!-- orange accent line (from logo) -->
+  <div class="absolute bottom-0 left-0 right-0 h-1 bg-orange"></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     TODAY STRIP
+════════════════════════════════════════ -->
+<div class="bg-navy-dark border-b-2 border-orange px-14 py-3 flex items-center gap-4">
+  <span class="bg-orange/20 text-orange font-bold text-[11px] tracking-[1.2px] uppercase px-3 py-1 rounded-sm whitespace-nowrap border border-orange/30">
+    ✦ זה קרה היום לפני
+  </span>
+  <span class="text-white/85 text-sm">
+    <strong class="text-white font-bold">46 שנה</strong> – הגיעה קבוצת המתיישבים הראשונה לאזור קרני שומרון. הם הקימו אוהלים בשטח שעתיד היה להפוך לשכונה הראשונה.
+  </span>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     NEIGHBORHOODS
+════════════════════════════════════════ -->
+<section class="max-w-7xl mx-auto px-14 py-16 fade-up">
+  <div class="flex items-end justify-between mb-10">
+    <div>
+      <h2 class="font-serif font-black text-[34px] text-navy mb-1">השכונות</h2>
+      <p class="text-sm text-navy/50 font-light">לחצו על שכונה לסיפור המלא</p>
+    </div>
+    <a href="#" class="text-[13px] text-cyan font-semibold flex items-center gap-1 hover:gap-2 transition-all">לכל השכונות ←</a>
+  </div>
+
+  <div class="grid grid-cols-4 gap-4">
+    <!-- Card 1 -->
+    <div class="nc-card relative overflow-hidden rounded-sm cursor-pointer shadow-md hover:-translate-y-1 hover:shadow-xl transition-all" style="aspect-ratio:3/4">
+      <div class="nc-bg absolute inset-0" style="background:linear-gradient(135deg,#1B3A6B,#122648)"></div>
+      <div class="absolute inset-0" style="background:linear-gradient(0deg,rgba(27,58,107,.85) 0%,transparent 55%)"></div>
+      <!-- cyan accent top bar -->
+      <div class="absolute top-0 left-0 right-0 h-1 bg-cyan"></div>
+      <div class="absolute bottom-0 right-0 left-0 p-4 z-10">
+        <div class="text-[10px] text-cyan font-bold tracking-[1.2px] mb-1">הוקמה 1978</div>
+        <div class="font-serif font-bold text-xl text-white leading-tight">קרני שומרון</div>
+        <div class="mt-2.5 w-7 h-7 rounded-full bg-cyan flex items-center justify-center">
+          <svg width="11" height="11" fill="none" stroke="#1B3A6B" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="nc-card relative overflow-hidden rounded-sm cursor-pointer shadow-md hover:-translate-y-1 hover:shadow-xl transition-all" style="aspect-ratio:3/4">
+      <div class="nc-bg absolute inset-0" style="background:linear-gradient(135deg,#00B4C8,#008A9A)"></div>
+      <div class="absolute inset-0" style="background:linear-gradient(0deg,rgba(0,138,154,.85) 0%,transparent 55%)"></div>
+      <div class="absolute top-0 left-0 right-0 h-1 bg-green"></div>
+      <div class="absolute bottom-0 right-0 left-0 p-4 z-10">
+        <div class="text-[10px] text-green font-bold tracking-[1.2px] mb-1">הוקמה 1981</div>
+        <div class="font-serif font-bold text-xl text-white leading-tight">אלוני שילה</div>
+        <div class="mt-2.5 w-7 h-7 rounded-full bg-green flex items-center justify-center">
+          <svg width="11" height="11" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="nc-card relative overflow-hidden rounded-sm cursor-pointer shadow-md hover:-translate-y-1 hover:shadow-xl transition-all" style="aspect-ratio:3/4">
+      <div class="nc-bg absolute inset-0" style="background:linear-gradient(135deg,#254d8f,#1B3A6B)"></div>
+      <div class="absolute inset-0" style="background:linear-gradient(0deg,rgba(27,58,107,.85) 0%,transparent 55%)"></div>
+      <div class="absolute top-0 left-0 right-0 h-1 bg-orange"></div>
+      <div class="absolute bottom-0 right-0 left-0 p-4 z-10">
+        <div class="text-[10px] text-orange font-bold tracking-[1.2px] mb-1">הוקמה 1983</div>
+        <div class="font-serif font-bold text-xl text-white leading-tight">נווה מנחם</div>
+        <div class="mt-2.5 w-7 h-7 rounded-full bg-orange flex items-center justify-center">
+          <svg width="11" height="11" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="nc-card relative overflow-hidden rounded-sm cursor-pointer shadow-md hover:-translate-y-1 hover:shadow-xl transition-all" style="aspect-ratio:3/4">
+      <div class="nc-bg absolute inset-0" style="background:linear-gradient(135deg,#7DC24B,#5E9636)"></div>
+      <div class="absolute inset-0" style="background:linear-gradient(0deg,rgba(94,150,54,.85) 0%,transparent 55%)"></div>
+      <div class="absolute top-0 left-0 right-0 h-1 bg-cyan"></div>
+      <div class="absolute bottom-0 right-0 left-0 p-4 z-10">
+        <div class="text-[10px] text-cyan font-bold tracking-[1.2px] mb-1">הוקמה 1985</div>
+        <div class="font-serif font-bold text-xl text-white leading-tight">גינות שומרון</div>
+        <div class="mt-2.5 w-7 h-7 rounded-full bg-cyan flex items-center justify-center">
+          <svg width="11" height="11" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SEARCH
+════════════════════════════════════════ -->
+<div class="bg-navy px-14 py-10 flex items-center justify-between gap-10">
+  <div class="font-serif font-bold text-xl text-white whitespace-nowrap">חיפוש משפחות ואנשים</div>
+
+  <div class="flex-1 flex overflow-hidden rounded-sm border border-white/15 bg-white/8">
+    <input
+      type="text"
+      placeholder="הקלד שם משפחה, שם פרטי, או שנה..."
+      class="flex-1 bg-transparent border-none outline-none text-white text-[15px] px-5 py-3.5 placeholder:text-white/35 font-light"
+      style="background:rgba(255,255,255,0.07)"
+    />
+    <button class="bg-cyan hover:bg-cyan-light text-navy font-bold text-sm px-6 transition-colors">חפש</button>
+  </div>
+
+  <div class="flex gap-2.5">
+    <button class="bg-cyan/20 border border-cyan/40 text-cyan text-xs px-4 py-1.5 rounded-full font-medium">הכל</button>
+    <button class="bg-white/8 border border-white/15 text-white/60 text-xs px-4 py-1.5 rounded-full hover:border-cyan/40 hover:text-cyan transition-all" style="background:rgba(255,255,255,0.08)">לפי שנה</button>
+    <button class="bg-white/8 border border-white/15 text-white/60 text-xs px-4 py-1.5 rounded-full hover:border-cyan/40 hover:text-cyan transition-all" style="background:rgba(255,255,255,0.08)">לפי שכונה</button>
+    <button class="bg-white/8 border border-white/15 text-white/60 text-xs px-4 py-1.5 rounded-full hover:border-cyan/40 hover:text-cyan transition-all" style="background:rgba(255,255,255,0.08)">לפי שם</button>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     TIMELINE
+════════════════════════════════════════ -->
+<section class="bg-mist px-14 py-16 fade-up">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-end justify-between mb-10">
+      <div>
+        <h2 class="font-serif font-black text-[34px] text-navy mb-1">ציר הזמן ההיסטורי</h2>
+        <p class="text-sm text-navy/50 font-light">מ-1978 ועד היום</p>
+      </div>
+      <a href="#" class="text-[13px] text-cyan font-semibold flex items-center gap-1 hover:gap-2 transition-all">לציר הזמן המלא ←</a>
+    </div>
+
+    <div class="relative pr-8">
+      <!-- vertical line -->
+      <div class="absolute right-0 top-3 bottom-3 w-0.5 rounded-full" style="background:linear-gradient(180deg,#00B4C8,#EBF4F6)"></div>
+
+      <!-- Item 1 -->
+      <div class="flex items-start gap-6 mb-9 relative">
+        <div class="absolute -right-[43px] top-1 w-5 h-5 rounded-full bg-orange border-[3px] border-white shadow-md" style="box-shadow:0 0 0 3px #F5A623"></div>
+        <div class="font-serif font-black text-3xl text-cyan leading-none min-w-[80px] text-left">1978</div>
+        <div class="flex-1">
+          <div class="font-bold text-base text-navy mb-1">ההגעה הראשונה</div>
+          <div class="text-sm text-navy/60 font-light leading-relaxed">קבוצת מתיישבים ראשונה מגיעה לאזור, מקימה אוהלים בשטח ריק בהרי שומרון.</div>
+        </div>
+        <div class="w-20 h-14 rounded-sm bg-navy/10 flex items-center justify-center text-2xl shrink-0">⛺</div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="flex items-start gap-6 mb-9 relative">
+        <div class="absolute -right-10 top-1 w-4 h-4 rounded-full bg-cyan border-[3px] border-white" style="box-shadow:0 0 0 3px #00B4C8"></div>
+        <div class="font-serif font-black text-3xl text-cyan leading-none min-w-[80px] text-left">1980</div>
+        <div class="flex-1">
+          <div class="font-bold text-base text-navy mb-1">הקמת הבתים הראשונים</div>
+          <div class="text-sm text-navy/60 font-light leading-relaxed">12 משפחות מתיישבות בשכונה הראשונה, נבנים מבני קבע.</div>
+        </div>
+        <div class="w-20 h-14 rounded-sm bg-navy/10 flex items-center justify-center text-2xl shrink-0">🏠</div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="flex items-start gap-6 mb-9 relative">
+        <div class="absolute -right-10 top-1 w-4 h-4 rounded-full bg-cyan border-[3px] border-white" style="box-shadow:0 0 0 3px #00B4C8"></div>
+        <div class="font-serif font-black text-3xl text-cyan leading-none min-w-[80px] text-left">1985</div>
+        <div class="flex-1">
+          <div class="font-bold text-base text-navy mb-1">פתיחת בית הספר הראשון</div>
+          <div class="text-sm text-navy/60 font-light leading-relaxed">40 תלמידים בשנת הפתיחה – סימן לצמיחה ולקהילה בוגרת.</div>
+        </div>
+        <div class="w-20 h-14 rounded-sm bg-navy/10 flex items-center justify-center text-2xl shrink-0">📚</div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="flex items-start gap-6 relative">
+        <div class="absolute -right-10 top-1 w-4 h-4 rounded-full bg-cyan border-[3px] border-white" style="box-shadow:0 0 0 3px #00B4C8"></div>
+        <div class="font-serif font-black text-3xl text-cyan leading-none min-w-[80px] text-left">1991</div>
+        <div class="flex-1">
+          <div class="font-bold text-base text-navy mb-1">הקמת המועצה המקומית</div>
+          <div class="text-sm text-navy/60 font-light leading-relaxed">קרני שומרון מוכרת כמועצה מקומית עצמאית.</div>
+        </div>
+        <div class="w-20 h-14 rounded-sm bg-navy/10 flex items-center justify-center text-2xl shrink-0">🏛️</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     GALLERY
+════════════════════════════════════════ -->
+<section class="max-w-7xl mx-auto px-14 py-16 fade-up">
+  <div class="flex items-end justify-between mb-10">
+    <div>
+      <h2 class="font-serif font-black text-[34px] text-navy mb-1">גלריית תמונות היסטוריות</h2>
+      <p class="text-sm text-navy/50 font-light">תמונות שתרמו תושבי קרני שומרון לאורך השנים</p>
+    </div>
+    <a href="#" class="text-[13px] text-cyan font-semibold flex items-center gap-1 hover:gap-2 transition-all">לגלריה המלאה ←</a>
+  </div>
+
+  <div class="grid grid-cols-3 gap-2.5" style="grid-template-rows: 220px 220px">
+    <!-- large left -->
+    <div class="row-span-2 relative rounded-sm overflow-hidden cursor-pointer group bg-mist flex items-center justify-center" style="background:linear-gradient(135deg,#EBF4F6,#d4eaf0)">
+      <span class="text-7xl">🏔️</span>
+      <div class="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+        <span class="text-white text-sm font-medium">נוף הרי שומרון, 1979</span>
+      </div>
+    </div>
+    <!-- top middle -->
+    <div class="relative rounded-sm overflow-hidden cursor-pointer group flex items-center justify-center" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe)">
+      <span class="text-4xl">🏕️</span>
+      <div class="absolute inset-0 bg-gradient-to-t from-navy/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+        <span class="text-white text-xs font-medium">האוהלים הראשונים</span>
+      </div>
+    </div>
+    <!-- top right -->
+    <div class="relative rounded-sm overflow-hidden cursor-pointer group flex items-center justify-center" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0)">
+      <span class="text-4xl">👨‍👩‍👧‍👦</span>
+      <div class="absolute inset-0 bg-gradient-to-t from-navy/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+        <span class="text-white text-xs font-medium">משפחות המייסדים</span>
+      </div>
+    </div>
+    <!-- bottom middle -->
+    <div class="relative rounded-sm overflow-hidden cursor-pointer group flex items-center justify-center" style="background:linear-gradient(135deg,#fef9c3,#fde68a)">
+      <span class="text-4xl">🛤️</span>
+      <div class="absolute inset-0 bg-gradient-to-t from-navy/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+        <span class="text-white text-xs font-medium">סלילת הכביש הראשון</span>
+      </div>
+    </div>
+    <!-- bottom right -->
+    <div class="relative rounded-sm overflow-hidden cursor-pointer group flex items-center justify-center" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe)">
+      <span class="text-4xl">🌿</span>
+      <div class="absolute inset-0 bg-gradient-to-t from-navy/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+        <span class="text-white text-xs font-medium">נטיעות ראשונות, 1982</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SUBMIT BANNER
+════════════════════════════════════════ -->
+<div class="mx-14 mb-16 rounded-sm overflow-hidden relative fade-up" style="background:linear-gradient(135deg,#1B3A6B 0%,#122648 100%)">
+  <!-- orange top bar -->
+  <div class="absolute top-0 left-0 right-0 h-1 bg-orange"></div>
+  <!-- decorative -->
+  <div class="absolute left-10 top-1/2 -translate-y-1/2 text-[180px] text-cyan/5 font-serif font-black leading-none pointer-events-none select-none">◈</div>
+
+  <div class="relative z-10 flex items-center justify-between gap-8 px-14 py-12">
+    <div>
+      <h3 class="font-serif font-black text-[28px] text-white mb-2">יש לך תמונה או סיפור?</h3>
+      <p class="text-white/65 text-[15px] font-light">עזרו לנו להשלים את הפאזל ההיסטורי. שלחו תמונה, סיפור, או זיכרון מהימים הראשונים.</p>
+    </div>
+    <div class="flex gap-3 shrink-0">
+      <a href="#" class="bg-cyan hover:bg-cyan-light text-navy font-bold text-[14px] px-6 py-3 rounded-sm transition-all hover:-translate-y-px">← שלח תמונה / סיפור</a>
+      <a href="#" class="border border-white/35 hover:border-white/70 text-white font-medium text-[14px] px-6 py-3 rounded-sm transition-all">הצטרפות לרשימת תפוצה</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer class="bg-navy-dark pt-12 pb-6">
+  <!-- orange top accent -->
+  <div class="h-1 bg-gradient-to-l from-orange via-cyan to-green mb-10"></div>
+
+  <div class="max-w-7xl mx-auto px-14">
+    <div class="grid grid-cols-4 gap-12 mb-10">
+      <!-- Brand -->
+      <div>
+        <div class="font-serif font-black text-xl text-white mb-3">בית הראשונים</div>
+        <div class="text-[13px] text-white/40 leading-relaxed">ארכיון היסטורי דיגיטלי של קרני שומרון ויהודה ושומרון. שומרים על הזיכרון לדורות הבאים.</div>
+      </div>
+      <!-- Nav -->
+      <div>
+        <div class="text-[11px] font-bold tracking-[1.3px] uppercase text-cyan mb-4">ניווט</div>
+        <ul class="space-y-2.5 list-none">
+          <li><a href="#" class="text-white/45 text-[13px] hover:text-white transition-colors">דף הבית</a></li>
+          <li><a href="#" class="text-white/45 text-[13px] hover:text-white transition-colors">השכונות</a></li>
+          <li><a href="#" class="text-white/45 text-[13px] hover:text-white transition-colors">ציר הזמן</a></li>
+          <li><a href="#" class="text-white/45 text-[13px] hover:text-white transition-colors">גלריה</a></li>
+          <li><a href="#" class="text-white/45 text-[13px] hover:text-white transition-colors">פינת הילדים</a></li>
+        </ul>
+      </div>
+      <!-- Info -->
+      <div>
+        <div class="text-[11px] font-bold tracking-[1.3px] uppercase text-cyan mb-4">מידע</div>
+        <ul class="space-y-2.5 list-none">
+          <li><a href="#" class="text-white/45 text-[13px] hover:text-white transition-colors">אודות</a></li>
+          <li><a href="#" class="text-white/45 text-[13px] hover:text-white transition-colors">סיפור ההתיישבות</a></li>
+          <li><a href="#" class="text-white/45 text-[13px] hover:text-white transition-colors">פנקס המתיישבים</a></li>
+          <li><a href="#" class="text-white/45 text-[13px] hover:text-white transition-colors">חיפוש</a></li>
+        </ul>
+      </div>
+      <!-- Contact -->
+      <div>
+        <div class="text-[11px] font-bold tracking-[1.3px] uppercase text-cyan mb-4">צור קשר</div>
+        <ul class="space-y-2.5 list-none">
+          <li><a href="#" class="text-white/45 text-[13px] hover:text-white transition-colors">כתוב אלינו</a></li>
+          <li><a href="#" class="text-white/45 text-[13px] hover:text-white transition-colors">שלח תמונה</a></li>
+          <li><a href="#" class="text-white/45 text-[13px] hover:text-white transition-colors">רשימת תפוצה</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-white/8 pt-6 flex items-center justify-between">
+      <p class="text-[12px] text-white/25">© 2025 בית הראשונים למורשת קרני שומרון ויש"ע. כל הזכויות שמורות.</p>
+      <div class="flex gap-3">
+        <a href="#" class="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white/40 text-[13px] hover:border-cyan hover:text-cyan transition-all">f</a>
+        <a href="#" class="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white/40 text-[13px] hover:border-cyan hover:text-cyan transition-all">✉</a>
+        <a href="#" class="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white/40 text-[11px] hover:border-cyan hover:text-cyan transition-all">wa</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- watermark -->
+<div class="fixed bottom-4 left-4 bg-navy/90 backdrop-blur text-cyan text-[11px] font-bold px-3 py-1.5 rounded border border-cyan/25 tracking-wide uppercase z-50">✦ סקיצה – דף הבית</div>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

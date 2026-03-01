@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>בית הראשונים – סקיצת דף הבית</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand:    #F5EDD8;
+    --cream:   #FBF7EE;
+    --brown:   #6B4C2A;
+    --gold:    #C8973A;
+    --rust:    #A0522D;
+    --olive:   #7A7A52;
+    --dark:    #2C1A0E;
+    --smoke:   #E8DFC8;
+    --accent:  #8B1A1A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Heebo', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    direction: rtl;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--dark);
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,.4);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .nav-logo-icon {
+    width: 38px; height: 38px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 18px; font-weight: 900;
+    color: var(--dark);
+    flex-shrink: 0;
+  }
+  .nav-logo-text {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 16px; font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .nav-logo-sub { font-size: 11px; color: var(--gold); font-weight: 300; }
+  .nav-links {
+    display: flex; gap: 28px; list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,.75);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color .2s;
+    letter-spacing: .3px;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-search {
+    display: flex; align-items: center;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 20px;
+    padding: 6px 14px;
+    gap: 8px;
+    cursor: pointer;
+  }
+  .nav-search span { color: rgba(255,255,255,.5); font-size: 13px; }
+  .nav-search svg { opacity: .5; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    height: 540px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to left, rgba(44,26,14,.1) 0%, rgba(44,26,14,.65) 60%),
+      linear-gradient(180deg, rgba(44,26,14,0) 40%, rgba(44,26,14,.8) 100%),
+      url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Shomron_hills.JPG/1280px-Shomron_hills.JPG') center/cover no-repeat;
+    transform: scale(1.03);
+    animation: heroZoom 12s ease-in-out infinite alternate;
+  }
+  @keyframes heroZoom {
+    from { transform: scale(1.03); }
+    to   { transform: scale(1.08) translateX(-10px); }
+  }
+  .hero-grain {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 64px 52px;
+    max-width: 680px;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 11px; font-weight: 700;
+    padding: 4px 12px; border-radius: 2px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .hero-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 56px; font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    text-shadow: 0 2px 20px rgba(0,0,0,.4);
+  }
+  .hero-sub {
+    font-size: 17px; font-weight: 300;
+    color: rgba(255,255,255,.85);
+    line-height: 1.6;
+    max-width: 480px;
+    margin-bottom: 32px;
+  }
+  .hero-cta {
+    display: flex; gap: 12px; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--dark);
+    padding: 12px 28px;
+    border-radius: 3px;
+    font-weight: 700; font-size: 15px;
+    text-decoration: none;
+    border: none; cursor: pointer;
+    transition: all .2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: #d9a840; transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 3px;
+    font-weight: 500; font-size: 15px;
+    text-decoration: none;
+    border: 1.5px solid rgba(255,255,255,.4);
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,.8); background: rgba(255,255,255,.1); }
+
+  /* ── TODAY EVENT STRIP ── */
+  .today-strip {
+    background: var(--accent);
+    padding: 12px 64px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .today-label {
+    background: rgba(255,255,255,.15);
+    color: #fff; font-size: 11px;
+    font-weight: 700; letter-spacing: 1.2px;
+    padding: 3px 10px; border-radius: 2px;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+  .today-text {
+    color: rgba(255,255,255,.92);
+    font-size: 14px;
+  }
+  .today-text strong { color: #fff; font-weight: 700; }
+
+  /* ── SECTION WRAPPER ── */
+  .section { padding: 72px 64px; }
+  .section-alt { background: var(--sand); }
+  .section-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 34px; font-weight: 900;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+  .section-sub {
+    font-size: 15px; color: var(--olive);
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+  .section-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  .section-header .see-all {
+    font-size: 13px; color: var(--gold);
+    text-decoration: none; font-weight: 600;
+    display: flex; align-items: center; gap: 4px;
+    transition: gap .2s;
+  }
+  .section-header .see-all:hover { gap: 8px; }
+
+  /* ── NEIGHBORHOODS ── */
+  .neighborhoods-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .neighborhood-card {
+    background: var(--dark);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform .25s, box-shadow .25s;
+    position: relative;
+    aspect-ratio: 3/4;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .neighborhood-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.25); }
+  .nc-bg {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    transition: transform .4s;
+  }
+  .neighborhood-card:hover .nc-bg { transform: scale(1.06); }
+  .nc-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(0deg, rgba(44,26,14,.85) 0%, transparent 55%);
+  }
+  .nc-content {
+    position: relative; z-index: 2;
+    padding: 16px;
+  }
+  .nc-year {
+    font-size: 10px; color: var(--gold);
+    font-weight: 700; letter-spacing: 1.2px;
+    margin-bottom: 4px;
+  }
+  .nc-name {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 20px; font-weight: 700;
+    color: #fff; line-height: 1.2;
+  }
+  .nc-arrow {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px;
+    background: var(--gold); border-radius: 50%;
+    margin-top: 10px;
+    transition: transform .2s;
+  }
+  .neighborhood-card:hover .nc-arrow { transform: translateX(-4px); }
+
+  /* color tints per card */
+  .nc-1 .nc-bg { background-color: #4a6741; background-image: linear-gradient(135deg,#4a6741,#2d4028); }
+  .nc-2 .nc-bg { background-color: #6b4c2a; background-image: linear-gradient(135deg,#6b4c2a,#3d2a16); }
+  .nc-3 .nc-bg { background-color: #5a6b4a; background-image: linear-gradient(135deg,#5a6b4a,#374230); }
+  .nc-4 .nc-bg { background-color: #7a5c3a; background-image: linear-gradient(135deg,#7a5c3a,#4a3520); }
+
+  /* ── TIMELINE ── */
+  .timeline-container {
+    position: relative;
+    padding-right: 32px;
+  }
+  .timeline-line {
+    position: absolute;
+    right: 0; top: 12px; bottom: 12px;
+    width: 3px;
+    background: linear-gradient(180deg, var(--gold), var(--smoke));
+    border-radius: 2px;
+  }
+  .tl-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 36px;
+    position: relative;
+  }
+  .tl-dot {
+    position: absolute;
+    right: -40px;
+    top: 4px;
+    width: 16px; height: 16px;
+    background: var(--gold);
+    border-radius: 50%;
+    border: 3px solid var(--cream);
+    box-shadow: 0 0 0 3px var(--gold);
+    flex-shrink: 0;
+  }
+  .tl-dot.big {
+    width: 22px; height: 22px;
+    right: -43px; top: 1px;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent);
+  }
+  .tl-year {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 28px; font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    min-width: 80px;
+    text-align: left;
+  }
+  .tl-body {}
+  .tl-title {
+    font-weight: 700; font-size: 16px;
+    color: var(--dark); margin-bottom: 4px;
+  }
+  .tl-desc { font-size: 14px; color: var(--olive); line-height: 1.5; }
+  .tl-img {
+    width: 80px; height: 60px;
+    border-radius: 3px;
+    background: var(--smoke);
+    flex-shrink: 0;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+
+  /* ── GALLERY ── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 220px 220px;
+    gap: 10px;
+  }
+  .gallery-item {
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    background: var(--smoke);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .gallery-item:first-child { grid-row: 1 / 3; }
+  .gallery-item-inner {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px;
+    transition: transform .3s;
+    background: linear-gradient(135deg, var(--sand), var(--smoke));
+  }
+  .gallery-item:hover .gallery-item-inner { transform: scale(1.05); }
+  .gallery-label {
+    position: absolute; bottom: 0; right: 0; left: 0;
+    background: linear-gradient(0deg, rgba(44,26,14,.75), transparent);
+    color: #fff; font-size: 12px;
+    padding: 20px 12px 10px;
+    opacity: 0; transition: opacity .3s;
+  }
+  .gallery-item:hover .gallery-label { opacity: 1; }
+
+  /* ── SUBMIT BANNER ── */
+  .submit-banner {
+    background: linear-gradient(135deg, var(--brown) 0%, var(--dark) 100%);
+    border-radius: 6px;
+    padding: 48px 56px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 32px;
+    margin: 0 64px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .submit-banner::before {
+    content: '◈';
+    position: absolute; left: 40px; top: 50%;
+    transform: translateY(-50%) rotate(12deg);
+    font-size: 180px; color: rgba(200,151,58,.08);
+    line-height: 1; pointer-events: none;
+  }
+  .submit-banner-text { position: relative; z-index: 1; }
+  .submit-banner h3 {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 28px; font-weight: 900;
+    color: #fff; margin-bottom: 8px;
+  }
+  .submit-banner p { color: rgba(255,255,255,.7); font-size: 15px; font-weight: 300; }
+  .submit-banner-actions { position: relative; z-index: 1; display: flex; gap: 12px; flex-shrink: 0; }
+
+  /* ── SEARCH BOX ── */
+  .search-section {
+    background: var(--dark);
+    padding: 48px 64px;
+    display: flex; align-items: center; justify-content: space-between; gap: 40px;
+  }
+  .search-label {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 22px; font-weight: 700;
+    color: #fff; white-space: nowrap;
+  }
+  .search-box {
+    flex: 1; display: flex;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 4px; overflow: hidden;
+  }
+  .search-input {
+    flex: 1; background: transparent;
+    border: none; outline: none;
+    color: #fff; font-size: 15px;
+    padding: 14px 20px;
+    font-family: 'Heebo', sans-serif;
+    direction: rtl;
+  }
+  .search-input::placeholder { color: rgba(255,255,255,.35); }
+  .search-btn {
+    background: var(--gold); border: none;
+    padding: 0 24px; cursor: pointer;
+    font-size: 14px; font-weight: 700;
+    color: var(--dark);
+    font-family: 'Heebo', sans-serif;
+    transition: background .2s;
+  }
+  .search-btn:hover { background: #d9a840; }
+  .search-filters {
+    display: flex; gap: 10px;
+  }
+  .filter-chip {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.15);
+    color: rgba(255,255,255,.65);
+    padding: 6px 14px; border-radius: 20px;
+    font-size: 12px; cursor: pointer;
+    transition: all .2s; white-space: nowrap;
+  }
+  .filter-chip:hover, .filter-chip.active {
+    background: rgba(200,151,58,.2);
+    border-color: var(--gold); color: var(--gold);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #1a0f06;
+    padding: 48px 64px 24px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 40px;
+  }
+  .footer-brand {}
+  .footer-logo {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 20px; font-weight: 900;
+    color: #fff; margin-bottom: 8px;
+  }
+  .footer-tagline { font-size: 13px; color: rgba(255,255,255,.4); line-height: 1.6; }
+  .footer-col h4 {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1.2px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul a { color: rgba(255,255,255,.5); font-size: 13px; text-decoration: none; transition: color .2s; }
+  .footer-col ul a:hover { color: rgba(255,255,255,.9); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding-top: 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-bottom p { font-size: 12px; color: rgba(255,255,255,.3); }
+  .footer-social { display: flex; gap: 12px; }
+  .social-icon {
+    width: 32px; height: 32px;
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,.4); font-size: 13px;
+    cursor: pointer; transition: all .2s; text-decoration: none;
+  }
+  .social-icon:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── LABEL BADGE ── */
+  .watermark {
+    position: fixed; bottom: 16px; left: 16px;
+    background: rgba(44,26,14,.85); backdrop-filter: blur(8px);
+    color: var(--gold); font-size: 11px; font-weight: 700;
+    padding: 6px 12px; border-radius: 4px;
+    letter-spacing: .8px; text-transform: uppercase;
+    border: 1px solid rgba(200,151,58,.3);
+    z-index: 999;
+  }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity .6s, transform .6s;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">ב</div>
+    <div class="nav-logo-text">
+      בית הראשונים
+      <div class="nav-logo-sub">למורשת קרני שומרון</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">דף הבית</a></li>
+    <li><a href="#">השכונות</a></li>
+    <li><a href="#">ציר הזמן</a></li>
+    <li><a href="#">גלריה</a></li>
+    <li><a href="#">אנשים ומשפחות</a></li>
+    <li><a href="#">שיתוף תוכן</a></li>
+    <li><a href="#">יצירת קשר</a></li>
+  </ul>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <span>חיפוש באתר...</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">✦ ארכיון היסטורי דיגיטלי</div>
+    <h1 class="hero-title">זיכרונות<br>קרני שומרון</h1>
+    <p class="hero-sub">סיפורי ההקמה, האנשים, הבתים הראשונים והשכונות שצמחו מתוך ריק לקהילה שלמה.</p>
+    <div class="hero-cta">
+      <a href="#" class="btn-primary">← גלה את הסיפורים</a>
+      <a href="#" class="btn-outline">שתף תמונה מהעבר</a>
+    </div>
+  </div>
+</div>
+
+<!-- TODAY STRIP -->
+<div class="today-strip">
+  <span class="today-label">✦ זה קרה היום לפני</span>
+  <span class="today-text"><strong>46 שנה</strong> – הגיעה קבוצת המתיישבים הראשונה לאזור קרני שומרון, ב-1978. הם הקימו אוהלים בשטח שעתיד היה להפוך לשכונת קרני שומרון הראשונה.</span>
+</div>
+
+<!-- NEIGHBORHOODS -->
+<div class="section reveal">
+  <div class="section-header">
+    <div>
+      <div class="section-title">השכונות</div>
+      <div class="section-sub">לחצו על שכונה לסיפור המלא</div>
+    </div>
+    <a href="#" class="see-all">לכל השכונות ←</a>
+  </div>
+  <div class="neighborhoods-grid">
+    <div class="neighborhood-card nc-1">
+      <div class="nc-bg"></div>
+      <div class="nc-overlay"></div>
+      <div class="nc-content">
+        <div class="nc-year">הוקמה 1978</div>
+        <div class="nc-name">קרני שומרון</div>
+        <div class="nc-arrow">
+          <svg width="12" height="12" fill="none" stroke="#2C1A0E" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="neighborhood-card nc-2">
+      <div class="nc-bg"></div>
+      <div class="nc-overlay"></div>
+      <div class="nc-content">
+        <div class="nc-year">הוקמה 1981</div>
+        <div class="nc-name">אלוני שילה</div>
+        <div class="nc-arrow">
+          <svg width="12" height="12" fill="none" stroke="#2C1A0E" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="neighborhood-card nc-3">
+      <div class="nc-bg"></div>
+      <div class="nc-overlay"></div>
+      <div class="nc-content">
+        <div class="nc-year">הוקמה 1983</div>
+        <div class="nc-name">נווה מנחם</div>
+        <div class="nc-arrow">
+          <svg width="12" height="12" fill="none" stroke="#2C1A0E" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="neighborhood-card nc-4">
+      <div class="nc-bg"></div>
+      <div class="nc-overlay"></div>
+      <div class="nc-content">
+        <div class="nc-year">הוקמה 1985</div>
+        <div class="nc-name">גינות שומרון</div>
+        <div class="nc-arrow">
+          <svg width="12" height="12" fill="none" stroke="#2C1A0E" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="search-section">
+  <div class="search-label">חיפוש משפחות ואנשים</div>
+  <div class="search-box">
+    <input class="search-input" type="text" placeholder="הקלד שם משפחה, שם פרטי, או שנה...">
+    <button class="search-btn">חפש</button>
+  </div>
+  <div class="search-filters">
+    <div class="filter-chip active">הכל</div>
+    <div class="filter-chip">לפי שנה</div>
+    <div class="filter-chip">לפי שכונה</div>
+    <div class="filter-chip">לפי שם</div>
+  </div>
+</div>
+
+<!-- TIMELINE -->
+<div class="section section-alt reveal">
+  <div class="section-header">
+    <div>
+      <div class="section-title">ציר הזמן ההיסטורי</div>
+      <div class="section-sub">מ-1978 ועד היום</div>
+    </div>
+    <a href="#" class="see-all">לציר הזמן המלא ←</a>
+  </div>
+  <div class="timeline-container">
+    <div class="timeline-line"></div>
+
+    <div class="tl-item">
+      <div class="tl-dot big"></div>
+      <div class="tl-year">1978</div>
+      <div class="tl-body">
+        <div class="tl-title">ההגעה הראשונה</div>
+        <div class="tl-desc">קבוצת מתיישבים הראשונה מגיעה לאזור, מקימה אוהלים בשטח ריק בהרי שומרון. תחילתה של קהילה.</div>
+      </div>
+      <div class="tl-img">⛺</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1980</div>
+      <div class="tl-body">
+        <div class="tl-title">הקמת הבתים הראשונים</div>
+        <div class="tl-desc">הקמת מבני הקבע הראשונים. 12 משפחות מתיישבות בשכונה הראשונה.</div>
+      </div>
+      <div class="tl-img">🏠</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1985</div>
+      <div class="tl-body">
+        <div class="tl-title">פתיחת בית הספר הראשון</div>
+        <div class="tl-desc">בית ספר יסודי נפתח. 40 תלמידים בשנת הפתיחה – סימן לצמיחה.</div>
+      </div>
+      <div class="tl-img">📚</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1991</div>
+      <div class="tl-body">
+        <div class="tl-title">הקמת המועצה המקומית</div>
+        <div class="tl-desc">קרני שומרון מוכרת רשמית כמועצה מקומית. תחילתה של עצמאות מוניציפלית.</div>
+      </div>
+      <div class="tl-img">🏛️</div>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div class="section reveal">
+  <div class="section-header">
+    <div>
+      <div class="section-title">גלריית תמונות היסטוריות</div>
+      <div class="section-sub">תמונות שתרמו תושבי קרני שומרון לאורך השנים</div>
+    </div>
+    <a href="#" class="see-all">לגלריה המלאה ←</a>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <div class="gallery-item-inner" style="font-size:64px">🏔️</div>
+      <div class="gallery-label">נוף הרי שומרון, 1979</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-item-inner">🏕️</div>
+      <div class="gallery-label">האוהלים הראשונים</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-item-inner">👨‍👩‍👧‍👦</div>
+      <div class="gallery-label">משפחות המייסדים</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-item-inner">🛤️</div>
+      <div class="gallery-label">סלילת הכביש הראשון</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-item-inner">🌿</div>
+      <div class="gallery-label">נטיעות ראשונות, 1982</div>
+    </div>
+  </div>
+</div>
+
+<!-- SUBMIT BANNER -->
+<div class="submit-banner reveal">
+  <div class="submit-banner-text">
+    <h3>יש לך תמונה או סיפור?</h3>
+    <p>עזרו לנו להשלים את הפאזל ההיסטורי. שלחו תמונה, סיפור, או זיכרון מהימים הראשונים.</p>
+  </div>
+  <div class="submit-banner-actions">
+    <a href="#" class="btn-primary">← שלח תמונה / סיפור</a>
+    <a href="#" class="btn-outline">הצטרפות לרשימת תפוצה</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">בית הראשונים</div>
+      <div class="footer-tagline">ארכיון היסטורי דיגיטלי של קרני שומרון ויהודה ושומרון.<br>שומרים על הזיכרון לדורות הבאים.</div>
+    </div>
+    <div class="footer-col">
+      <h4>ניווט</h4>
+      <ul>
+        <li><a href="#">דף הבית</a></li>
+        <li><a href="#">השכונות</a></li>
+        <li><a href="#">ציר הזמן</a></li>
+        <li><a href="#">גלריה</a></li>
+        <li><a href="#">פינת הילדים</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>מידע</h4>
+      <ul>
+        <li><a href="#">אודות</a></li>
+        <li><a href="#">סיפור ההתיישבות</a></li>
+        <li><a href="#">פנקס המתיישבים</a></li>
+        <li><a href="#">חיפוש</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>צור קשר</h4>
+      <ul>
+        <li><a href="#">כתוב אלינו</a></li>
+        <li><a href="#">שלח תמונה</a></li>
+        <li><a href="#">רשימת תפוצה</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 בית הראשונים למורשת קרני שומרון ויש"ע. כל הזכויות שמורות.</p>
+    <div class="footer-social">
+      <a href="#" class="social-icon">f</a>
+      <a href="#" class="social-icon">✉</a>
+      <a href="#" class="social-icon">wa</a>
+    </div>
+  </div>
+</footer>
+
+<div class="watermark">✦ סקיצה – בית הראשונים</div>
+
+<script>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => io.observe(el));
+
+  // Filter chips
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
